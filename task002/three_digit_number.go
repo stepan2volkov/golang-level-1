@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	var number int16
+
 	fmt.Print("Enter three digit number: ")
 	fmt.Scanln(&number)
 
