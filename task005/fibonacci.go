@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 var cacheCalls uint = 0
@@ -46,7 +47,10 @@ func main() {
 	var fibonacciNum uint
 
 	fmt.Print("Enter Fibonacci Num: ")
-	fmt.Scanln(&fibonacciNum)
+	if _, err := fmt.Scanln(&fibonacciNum); err != nil {
+		fmt.Println("You should use integer number")
+		os.Exit(1)
+	}
 
 	fmt.Println("Result:", fibonacciRecursive(fibonacciNum))
 
