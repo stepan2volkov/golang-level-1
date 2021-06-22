@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func BenchmarkFibonacciWithouCache10(b *testing.B) {
+func BenchmarkFibonacciWithoutCache10(b *testing.B) {
 	// calculate fibonacci numbers without cache b.N times
 	for n := 0; n < b.N; n++ {
 		f := New(false)
