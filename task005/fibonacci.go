@@ -5,45 +5,33 @@ import (
 	"os"
 )
 
-var cacheCalls uint = 0
-var calcCalls uint = 0
-
-// Удобно для сбора статистики создать алиас и методы для него
-type FibonacciCache map[uint]uint
-
-func (cache FibonacciCache) put(n, number uint) {
-	cache[n] = number
+type Fibonacci struct {
+	cache map[uint]uint
 }
 
-func (cache FibonacciCache) get(n uint) (uint, bool) {
-	value, ok := cache[n]
-	if ok {
-		// Фиксируем только те вызовы, которые были полезны
-		cacheCalls++
-	}
-	return value, ok
-}
-
-var fibonacciNumbers = FibonacciCache{}
-
-func fibonacciRecursive(n uint) (number uint) {
-	number, ok := fibonacciNumbers.get(n)
-	if ok {
+func (f *Fibonacci) Calculate(n uint) (result uint) {
+	result, exists := f.cache[n]
+	if exists {
 		return
 	}
-	calcCalls++
 	defer func() {
-		fibonacciNumbers.put(n, number)
+		f.cache[n] = result
 	}()
 	if n < 2 {
-		number = n
-		return
+		result = n
+	} else {
+		result = f.Calculate(n-1) + f.Calculate(n-2)
 	}
-	number = fibonacciRecursive(n-1) + fibonacciRecursive(n-2)
 	return
 }
 
+func New() *Fibonacci {
+	cache := make(map[uint]uint)
+	return &Fibonacci{cache}
+}
+
 func main() {
+	f := New()
 	var fibonacciNum uint
 
 	fmt.Print("Enter Fibonacci Num: ")
@@ -52,8 +40,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println("Result:", fibonacciRecursive(fibonacciNum))
-
-	// Печать статистики
-	fmt.Printf("Cache: %d, Calculation: %d\n", cacheCalls, calcCalls)
+	fmt.Println("Result:", f.Calculate(fibonacciNum))
 }
