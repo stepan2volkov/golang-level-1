@@ -8,16 +8,20 @@ import (
 
 type Fibonacci struct {
 	cache map[int64]*big.Int
+	// useCache is introduced to make benchmark and see difference in performance
+	useCache bool
 }
 
 func (f *Fibonacci) Calculate(n int64) (result *big.Int) {
 	result, exists := f.cache[n]
-	if exists {
+	if exists && f.useCache {
 		return
 	}
-	defer func() {
-		f.cache[n] = result
-	}()
+	if f.useCache {
+		defer func() {
+			f.cache[n] = result
+		}()
+	}
 	if n < 2 {
 		result = big.NewInt(n)
 	} else {
@@ -27,13 +31,13 @@ func (f *Fibonacci) Calculate(n int64) (result *big.Int) {
 	return
 }
 
-func New() *Fibonacci {
+func New(useCache bool) *Fibonacci {
 	cache := make(map[int64]*big.Int)
-	return &Fibonacci{cache}
+	return &Fibonacci{cache, useCache}
 }
 
 func main() {
-	f := New()
+	f := New(true)
 	var fibonacciNum int64
 
 	fmt.Print("Enter Fibonacci Num: ")
