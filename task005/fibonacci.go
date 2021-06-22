@@ -14,8 +14,6 @@ func (f *Fibonacci) Calculate(n int64) (result *big.Int) {
 	result, exists := f.cache[n]
 	if exists {
 		return
-	} else {
-		result = new(big.Int)
 	}
 	defer func() {
 		f.cache[n] = result
@@ -23,6 +21,7 @@ func (f *Fibonacci) Calculate(n int64) (result *big.Int) {
 	if n < 2 {
 		result = big.NewInt(n)
 	} else {
+		result = new(big.Int)
 		result.Add(f.Calculate(n-1), f.Calculate(n-2))
 	}
 	return
