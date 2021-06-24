@@ -1,11 +1,11 @@
-package main
+package subtasks
 
 import (
 	"fmt"
 	"math"
 )
 
-func main() {
+func Circle() {
 	var area float64
 	fmt.Print("Area: ")
 	fmt.Scanln(&area)

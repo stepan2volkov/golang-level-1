@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/big"
-	"os"
 )
 
 type Fibonacci struct {
@@ -40,10 +39,11 @@ func main() {
 	f := New(true)
 	var fibonacciNum int64
 
-	fmt.Print("Enter Fibonacci Num: ")
+	if _, err := fmt.Print("Enter Fibonacci Num: "); err != nil {
+		panic(err)
+	}
 	if _, err := fmt.Scanln(&fibonacciNum); err != nil {
-		fmt.Println("You should use integer number")
-		os.Exit(1)
+		panic("You should use integer number")
 	}
 
 	fmt.Println("Result:", f.Calculate(fibonacciNum))

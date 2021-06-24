@@ -1,8 +1,8 @@
-package main
+package subtasks
 
 import "fmt"
 
-func main() {
+func ThreeDigitNumber() {
 	var number int16
 
 	fmt.Print("Enter three digit number: ")

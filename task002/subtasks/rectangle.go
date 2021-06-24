@@ -1,8 +1,8 @@
-package main
+package subtasks
 
 import "fmt"
 
-func main() {
+func Rectangle() {
 	var a, b float32
 
 	fmt.Print("a: ")

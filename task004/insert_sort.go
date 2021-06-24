@@ -18,21 +18,11 @@ func sortInPlace(array []int) {
 	}
 }
 
-// Сортировка вставками, которая не изменяет первоначальный массив
-func sort(array []int) []int {
-	newArray := make([]int, len(array))
-	copy(newArray, array)
-	sortInPlace(newArray)
-	return newArray
-}
-
 func main() {
 	intNumbers := []int{10, 8, 6, 4, 2}
-
-	fmt.Println("INIT:\t\t\t", intNumbers)
-	fmt.Println("SORTED:\t\t\t", sort(intNumbers))
-	fmt.Println("INIT:\t\t\t", intNumbers)
-
 	sortInPlace(intNumbers)
-	fmt.Println("SORTED IN PLACE:\t", intNumbers)
+	_, err := fmt.Println(intNumbers)
+	if err != nil {
+		panic(err)
+	}
 }

@@ -3,5 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, World!")
+	if _, err := fmt.Println("Hello, World!"); err != nil {
+		panic(err)
+	}
 }
