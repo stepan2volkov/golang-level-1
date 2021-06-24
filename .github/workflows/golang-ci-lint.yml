@@ -7,7 +7,7 @@ on:
   pull_request:
 jobs:
   golangci-task-1:
-    name: lint
+    name: lint-task-1
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
           version: v1.29
           working-directory: task001
   golangci-task-2:
-    name: lint
+    name: lint-task-2
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
           version: v1.29
           working-directory: task002
   golangci-task-3:
-    name: lint
+    name: lint-task-3
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
           version: v1.29
           working-directory: task003
   golangci-task-4:
-    name: lint
+    name: lint-task-4
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
           version: v1.29
           working-directory: task004
   golangci-task-5:
-    name: lint
+    name: lint-task-5
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
