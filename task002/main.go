@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"task002/subtasks"
+	"golang-level-1/task002/subtasks"
 )
 
 func main() {
