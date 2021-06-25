@@ -46,5 +46,7 @@ func main() {
 		panic("You should use integer number")
 	}
 
-	fmt.Println("Result:", f.Calculate(fibonacciNum))
+	if _, err := fmt.Println("Result:", f.Calculate(fibonacciNum)); err != nil {
+		panic(err)
+	}
 }
