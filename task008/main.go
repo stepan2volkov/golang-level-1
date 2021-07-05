@@ -1,27 +1,22 @@
 package main
 
 import (
-	"env-var/internal/config"
+	"env-var/config"
+	"flag"
 	"fmt"
 	"log"
 )
 
-func main() {
-	conf := &config.Config{}
+var (
+	configType = flag.String("type", "env", "Source for getting config. Options: env")
+)
 
-	// Используем рефлексию для получения переменных окружения.
-	// Использовать рефлексию, когда можно обойтись без неё - не best practice.
-	// Но знать как использовать определенно стоит
-	err := config.GetConfigByReflect(conf)
+func main() {
+	flag.Parse()
+
+	err, conf := config.GetConfig(*configType)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	fmt.Println(conf)
-
-	// Без использования рефлексии
-	config, err := config.GetConfig()
-	if err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Println(config)
 }
