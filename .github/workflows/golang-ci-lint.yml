@@ -56,3 +56,13 @@ jobs:
         with:
           version: v1.29
           working-directory: task005
+  golangci-task-8:
+    name: lint-task-8
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.29
+          working-directory: task008
