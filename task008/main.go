@@ -1,22 +1,23 @@
 package main
 
 import (
-	"env-var/config"
+	"env-var/conf"
 	"flag"
 	"fmt"
 	"log"
 )
 
 var (
-	configType = flag.String("type", "env", "Source for getting config. Options: env")
+	config = flag.String("type", "env", "Source for getting config. \nUse 'env' for getting values from env-vars.\nUse 'filepath.yml' for getting values from yaml-file")
 )
 
 func main() {
 	flag.Parse()
 
-	err, conf := config.GetConfig(*configType)
+	conf, err := conf.GetConfig(*config)
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	fmt.Println(conf)
 }
