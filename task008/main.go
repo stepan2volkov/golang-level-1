@@ -19,5 +19,5 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(conf)
+  fmt.Println(conf)
 }
