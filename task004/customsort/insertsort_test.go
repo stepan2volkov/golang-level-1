@@ -1,6 +1,9 @@
 package customsort
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestSortInPlace(t *testing.T) {
 	tests := []struct {
@@ -29,4 +32,11 @@ func TestSortInPlace(t *testing.T) {
 		})
 	}
 
+}
+
+func ExampleSortInPlace() {
+	unsortedSlice := []int{7, 5, 4, 3, 1, -5}
+	SortInPlace(unsortedSlice)
+	fmt.Println(unsortedSlice)
+	// Output: [-5 1 3 4 5 7]
 }
