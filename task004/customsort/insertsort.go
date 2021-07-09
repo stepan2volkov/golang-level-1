@@ -1,11 +1,7 @@
-package main
-
-import (
-	"fmt"
-)
+package customsort
 
 // Сортировка вставками на месте
-func sortInPlace(array []int) {
+func SortInPlace(array []int) {
 	for current_index, current_value := range array {
 		prev_index := current_index - 1
 
@@ -15,14 +11,5 @@ func sortInPlace(array []int) {
 			prev_index--
 		}
 		array[prev_index+1] = current_value
-	}
-}
-
-func main() {
-	intNumbers := []int{10, 8, 6, 4, 2}
-	sortInPlace(intNumbers)
-	_, err := fmt.Println(intNumbers)
-	if err != nil {
-		panic(err)
 	}
 }
